@@ -4,8 +4,12 @@ describe Game do
   it { should have_many(:rounds) }
   
   subject { create(:game, :id => 1) }
-  let!(:round1) { create(:round, :game_id => 1, :created_at => 10.seconds.ago) }
-  let!(:round2) { create(:round, :game_id => 1, :created_at => 5.seconds.ago) }
+  let!(:round1) { create(:round, :game_id => 1, 
+                         :created_at => 10.seconds.ago, 
+                         :winner => 'player1') }
+  let!(:round2) { create(:round, :game_id => 1, 
+                         :created_at => 5.seconds.ago, 
+                         :winner => 'player1') }
   
   describe '.current_round_number' do
     it 'correctly returns the current round number' do

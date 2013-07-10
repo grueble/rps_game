@@ -1,0 +1,14 @@
+W: <%= current_game.wins_for('player1') %>
+T: <%= current_game.ties %>
+W: <%= current_game.wins_for('player2') %>
+
+<% if current_game.wins_for('player1')  > current_game.wins_for('player2') %>
+  Player 1 Wins!
+<% else %>
+  Player 2 Wins!
+<% end %>
+
+<%= total_moves_for('player1', 'rock')%>
+
+<%= button_to("New Game", game_path) %>
+<%= button_to("Home", new_game_path) %>

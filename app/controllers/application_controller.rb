@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   
-  helper_method :current_game
+  helper_method :current_game, :total_moves_for
   
   protected
   
@@ -11,5 +11,9 @@ class ApplicationController < ActionController::Base
   
   def current_round
     current_game.current_round
+  end
+  
+  def total_moves_for(player, move)
+    current_game.rounds.where("#{player}_move" => move).count
   end
 end

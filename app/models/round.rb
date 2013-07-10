@@ -7,16 +7,6 @@ class Round < ActiveRecord::Base
   
   belongs_to :game
   
-  def store_winner
-    if determine_winner == 1
-      winner = 'player1'
-    elsif determine_winner == 2
-      winner = 'player2'
-    else
-      winner = 'tie'
-    end
-  end
-  
   def round_over?
     player1_move? && player2_move?
   end
@@ -43,9 +33,21 @@ class Round < ActiveRecord::Base
         2
       elsif player2_move == 'paper'
         1
-      elsif @bot_move == 'scissors'
+      elsif player2_move == 'scissors'
         0
       end
+    end
+  end
+  
+  private
+  
+  def store_winner
+    if determine_winner == 1
+      self.winner = 'player1'
+    elsif determine_winner == 2
+      self.winner = 'player2'
+    else
+      self.winner = 'tie'
     end
   end
 end
