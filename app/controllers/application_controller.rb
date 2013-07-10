@@ -12,8 +12,4 @@ class ApplicationController < ActionController::Base
   def current_round
     current_game.current_round
   end
-  
-  def total_moves_for(player, move)
-    current_game.rounds.where("#{player}_move" => move).count
-  end
 end

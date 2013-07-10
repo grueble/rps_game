@@ -23,7 +23,7 @@ describe MovesController do
       it { should render_template(:create) }
     end
     
-    it "should add amove to the round" do
+    it "should add a move to the round" do
       round = game.current_round
       expect {
          get :create, :move => 'rock'

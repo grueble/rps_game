@@ -1,6 +1,4 @@
 class Game < ActiveRecord::Base
-  attr_accessible
-  
   has_many :rounds
   
   ROUNDS = 3
@@ -23,5 +21,9 @@ class Game < ActiveRecord::Base
   
   def ties
     rounds.where(:winner => 'tie').count
+  end
+  
+  def total_moves_for(player, move)
+    current_game.rounds.where("#{player}_move" => move).count
   end
 end
