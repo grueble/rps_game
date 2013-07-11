@@ -24,7 +24,7 @@ describe MovesController do
     end
     
     it "should add a move to the round" do
-      round = game.current_round
+      round = Round.latest
       expect {
          get :create, :move => 'rock'
       }.to change{ round.reload.player1_move }.to('rock')

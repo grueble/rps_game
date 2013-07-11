@@ -25,12 +25,6 @@ describe Game do
     end
   end
   
-  describe '#current_round' do
-    it 'properly returns a Round object for the current round' do
-      subject.current_round.should == round2
-    end
-  end
-  
   describe '#ties' do
     let!(:round3) { create(:round, :game_id => subject.id, :winner => 'tie')}
     

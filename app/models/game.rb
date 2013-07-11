@@ -15,15 +15,15 @@ class Game < ActiveRecord::Base
     rounds.where(:winner => player).count
   end
   
-  def current_round
-    rounds.order('created_at DESC').first
-  end
-  
   def ties
     rounds.where(:winner => 'tie').count
   end
   
   def total_moves_for(player, move)
     rounds.where("#{player}_move" => move).count
+  end
+  
+  def game_winner_number
+    wins_for('player1') > wins_for('player2') ? 1 : 2
   end
 end

@@ -10,6 +10,6 @@ class ApplicationController < ActionController::Base
   end
   
   def current_round
-    current_game.current_round
+    current_game.rounds.latest
   end
 end

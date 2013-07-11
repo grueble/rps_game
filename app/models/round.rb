@@ -7,36 +7,16 @@ class Round < ActiveRecord::Base
   
   belongs_to :game
   
+  def self.latest
+    order('created_at DESC').first
+  end
+  
   def round_over?
     player1_move? && player2_move?
   end
   
   def determine_winner
-    if player1_move == 'rock'
-      if player2_move == 'rock'
-        0
-      elsif player2_move == 'paper'
-        2
-      elsif player2_move == 'scissors'
-        1
-      end
-    elsif player1_move == 'paper'
-      if player2_move == 'rock'
-        1
-      elsif player2_move == 'paper'
-        0
-      elsif player2_move == 'scissors'
-        2
-       end
-    else player1_move == 'scissors'
-      if player2_move == 'rock'
-        2
-      elsif player2_move == 'paper'
-        1
-      elsif player2_move == 'scissors'
-        0
-      end
-    end
+    WinnerDeterminer.new(player1_move, player2_move).winning_player_number
   end
   
   private
