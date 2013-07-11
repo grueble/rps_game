@@ -3,6 +3,5 @@
 FactoryGirl.define do
   factory :round do
     game
-    game_id 1
   end
 end

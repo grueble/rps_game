@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   
-  helper_method :current_game, :total_moves_for
+  helper_method :current_game
   
   protected
   

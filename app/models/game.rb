@@ -24,6 +24,6 @@ class Game < ActiveRecord::Base
   end
   
   def total_moves_for(player, move)
-    current_game.rounds.where("#{player}_move" => move).count
+    rounds.where("#{player}_move" => move).count
   end
 end

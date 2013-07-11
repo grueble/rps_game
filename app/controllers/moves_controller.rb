@@ -12,6 +12,6 @@ class MovesController < ApplicationController
   private
   
   def move_for_ai
-    RpsBot.new(params[:move]).move
+    [ 'rock', 'paper', 'scissors' ].sample
   end
 end
