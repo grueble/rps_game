@@ -30,6 +30,4 @@ describe MovesController do
       }.to change{ round.reload.player1_move }.to('rock')
     end
   end
-  
-  
 end

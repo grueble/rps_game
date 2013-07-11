@@ -13,25 +13,25 @@ describe Game do
                          :player1_move => 'rock',
                          :player2_move => 'scissors') }
   
-  describe '.current_round_number' do
+  describe '#current_round_number' do
     it 'correctly returns the current round number' do
       subject.current_round_number.should == 2
     end
   end
   
-  describe '.wins_for' do
+  describe '#wins_for' do
     it 'calculates the number of wins for a given player' do
       subject.wins_for('player1').should == 2
     end
   end
   
-  describe '.current_round' do
+  describe '#current_round' do
     it 'properly returns a Round object for the current round' do
       subject.current_round.should == round2
     end
   end
   
-  describe '.ties' do
+  describe '#ties' do
     let!(:round3) { create(:round, :game_id => subject.id, :winner => 'tie')}
     
     it 'correctly returns the number of ties in a given Game' do
@@ -39,7 +39,7 @@ describe Game do
     end
   end
   
-  describe '.total_moves_for' do
+  describe '#total_moves_for' do
     it 'sums the number of moves of a certain type for a certain player' do
       subject.total_moves_for('player1', 'rock').should == 2
       subject.total_moves_for('player2', 'scissors').should == 2
