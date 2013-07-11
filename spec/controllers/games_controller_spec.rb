@@ -20,6 +20,16 @@ describe GamesController do
   end
   
   describe 'GET #show' do
+    let(:round) { create(:round, :game_id => subject.id, 
+                         :player1_move => 'rock', 
+                         :player2_move => 'scissors') }
+    let(:round) { create(:round, :game_id => subject.id, 
+                         :player1_move => 'rock', 
+                         :player2_move => 'scissors') }
+    let(:round) { create(:round, :game_id => subject.id, 
+                         :player1_move => 'rock', 
+                         :player2_move => 'scissors') }
+
     before { get :show }
     
     it { should respond_with(:success) }
