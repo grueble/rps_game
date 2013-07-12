@@ -6,7 +6,6 @@ class MovesController < ApplicationController
   def create
     current_game.rounds.latest.update_attributes(:player1_move => params[:move], 
                                                  :player2_move => move_for_ai)
-    current_game.rounds.latest.determine_winner
   end
   
   private
