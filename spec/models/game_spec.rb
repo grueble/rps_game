@@ -52,6 +52,7 @@ describe Game do
     it 'returns the numerical value of the winning player' do
       subject.game_winner_number.should == 1
     end
+    
     context 'when there is a tie' do
       let!(:round4) { create(:round, :game_id => subject.id, 
                             :player1_move => 'paper',
