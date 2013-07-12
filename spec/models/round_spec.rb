@@ -10,7 +10,7 @@ describe Round do
   it { should validate_presence_of(:game_id) }
   
   describe '#determine_winner' do
-    it 'it...' do
+    it 'correctly calls an object of the WinnerDeterminer Class' do
       subject.update_attributes(:player1_move => 'rock', :player2_move => 'scissors')
       winner_determiner = stub(:winning_player_number => 1)
       WinnerDeterminer.should_receive(:new).with('rock', 'scissors').and_return(winner_determiner)
