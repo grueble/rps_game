@@ -11,6 +11,10 @@ class Game < ActiveRecord::Base
     rounds.count
   end
   
+  def actual_round_number
+    rounds.count - rounds.where(:winner => 'tie').count
+  end
+  
   def wins_for(player)
     rounds.where(:winner => player).count
   end

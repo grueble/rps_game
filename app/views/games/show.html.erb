@@ -17,4 +17,4 @@ Player 2 chose scissors <%= current_game.total_moves_for('player2', 'scissors')%
 <br>
 
 <%= button_to("New Game", game_path) %>
-<%= button_to("Home", new_game_path) %>
+<%= link_to "Home", new_game_path %>
