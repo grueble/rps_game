@@ -47,4 +47,21 @@ describe Game do
       subject.total_moves_for('player2', 'scissors').should == 2
     end
   end 
+  
+  describe '#game_winner_number' do
+    it 'returns the numerical value of the winning player' do
+      subject.game_winner_number.should == 1
+    end
+    context 'when there is a tie' do
+      let!(:round4) { create(:round, :game_id => subject.id, 
+                            :player1_move => 'paper',
+                            :player2_move => 'scissors') }
+      let!(:round5) { create(:round, :game_id => subject.id, 
+                            :player1_move => 'paper',
+                            :player2_move => 'scissors') }
+      it 'returns 0' do
+        subject.game_winner_number.should == 0
+      end
+    end
+  end
 end 

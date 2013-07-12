@@ -5,7 +5,7 @@ Player1 Wins: <%= current_game.wins_for('player1') %>
 Ties: <%= current_game.ties %>
 Player2 Wins: <%= current_game.wins_for('player2') %>
 
-<% if current_game.actual_round_number < current_game.number_of_rounds %>
+<% if current_game.over? %>
   <%= link_to "Continue", new_move_path %>
 <% else %>
   <%= link_to "Results", game_path %>

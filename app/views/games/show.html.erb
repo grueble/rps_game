@@ -2,8 +2,11 @@ Player1 Wins: <%= current_game.wins_for('player1') %>
 Ties: <%= current_game.ties %>
 Player2 Wins: <%= current_game.wins_for('player2') %>
 <br>
-
-Player <%= current_game.game_winner_number %> Wins!
+<% if current_game.game_winner_number != 0 %>
+  Player <%= current_game.game_winner_number %> Wins!
+<% else %>
+  It's a TIE!
+<% end %>
 <br>
 
 Player 1 chose rock <%= current_game.total_moves_for('player1', 'rock')%> times | 

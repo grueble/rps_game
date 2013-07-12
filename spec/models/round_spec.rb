@@ -10,55 +10,11 @@ describe Round do
   it { should validate_presence_of(:game_id) }
   
   describe '#determine_winner' do
-    context 'when player1 picks rock' do
-      it 'identifies the winner when player2 picks rock' do
-        subject.update_attributes(:player1_move => "rock", :player2_move => "rock")
-        subject.determine_winner.should == 0
-      end
-      
-      it 'identifies the winner when player2 picks paper' do
-        subject.update_attributes(:player1_move => "rock", :player2_move => "paper")
-        subject.determine_winner.should == 2
-      end
-      
-      it 'identifies the winner when player2 picks scissors' do
-        subject.update_attributes(:player1_move => "rock", :player2_move => "scissors")
-        subject.determine_winner.should == 1
-      end
-    end
-    
-    context 'when player1 picks paper' do
-      it 'identifies the winner when player2 picks rock' do
-        subject.update_attributes(:player1_move => "paper", :player2_move => "rock")
-        subject.determine_winner.should == 1
-      end
-      
-      it 'identifies the winner when player2 picks paper' do
-        subject.update_attributes(:player1_move => "paper", :player2_move => "paper")
-        subject.determine_winner.should == 0
-      end
-      
-      it 'identifies the winner when player2 picks scissors' do
-        subject.update_attributes(:player1_move => "paper", :player2_move => "scissors")
-        subject.determine_winner.should == 2
-      end
-    end
-    
-    context 'when player1 picks scissors' do
-      it 'identifies the winner when player2 picks rock' do
-        subject.update_attributes(:player1_move => "scissors", :player2_move => "rock")
-        subject.determine_winner.should == 2
-      end
-      
-      it 'identifies the winner when player2 picks paper' do
-        subject.update_attributes(:player1_move => "scissors", :player2_move => "paper")
-        subject.determine_winner.should == 1
-      end
-      
-      it 'identifies the winner when player2 picks scissors' do
-        subject.update_attributes(:player1_move => "scissors", :player2_move => "scissors")
-        subject.determine_winner.should == 0
-      end
+    it 'it...' do
+      subject.update_attributes(:player1_move => 'rock', :player2_move => 'scissors')
+      winner_determiner = stub(:winning_player_number => 1)
+      WinnerDeterminer.should_receive(:new).with('rock', 'scissors').and_return(winner_determiner)
+      subject.determine_winner
     end
   end
   

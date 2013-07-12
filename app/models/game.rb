@@ -12,7 +12,7 @@ class Game < ActiveRecord::Base
   end
   
   def actual_round_number
-    rounds.count - rounds.where(:winner => 'tie').count
+    rounds.where("winner != ?", 'tie').count
   end
   
   def wins_for(player)
@@ -28,6 +28,16 @@ class Game < ActiveRecord::Base
   end
   
   def game_winner_number
-    wins_for('player1') > wins_for('player2') ? 1 : 2
+    if wins_for('player1') > wins_for('player2')
+      1
+    elsif wins_for('player1') < wins_for('player2')
+      2
+    else
+      0
+    end
+  end
+  
+  def over?
+    actual_round_number < number_of_rounds
   end
 end
