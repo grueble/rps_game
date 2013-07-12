@@ -1,0 +1,23 @@
+Player1 Wins: <%= current_game.wins_for('player1') %>
+Ties: <%= current_game.ties %>
+Player2 Wins: <%= current_game.wins_for('player2') %>
+<br>
+<% if current_game.game_winner_number != 0 %>
+  Player <%= current_game.game_winner_number %> Wins!
+<% else %>
+  It's a TIE!
+<% end %>
+<br>
+
+Player 1 chose rock <%= current_game.total_moves_for('player1', 'rock')%> times | 
+Player 2 chose rock <%= current_game.total_moves_for('player2', 'rock')%> times
+<br>
+Player 1 chose paper <%= current_game.total_moves_for('player1', 'paper')%> times | 
+Player 2 chose paper <%= current_game.total_moves_for('player2', 'paper')%> times
+<br>
+Player 1 chose scissors <%= current_game.total_moves_for('player1', 'scissors')%> times | 
+Player 2 chose scissors <%= current_game.total_moves_for('player2', 'scissors')%> times
+<br>
+
+<%= button_to("New Game", game_path) %>
+<%= link_to "Home", new_game_path %>

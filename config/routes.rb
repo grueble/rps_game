@@ -1,4 +1,16 @@
 RpsGame::Application.routes.draw do
+  resource :game, :only => [ :new, :show, :create ]
+  
+  resources :moves, :only => [ :new ]
+  
+  with_options :to => 'moves#create' do |routes|
+    routes.get 'moves/rock', :move => 'rock'
+    routes.get 'moves/paper', :move => 'paper'
+    routes.get 'moves/scissors', :move => 'scissors'
+  end
+  
+  root :to => 'games#new'
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
