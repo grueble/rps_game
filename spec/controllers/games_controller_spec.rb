@@ -10,6 +10,18 @@ describe GamesController do
     it 'successfully creates a game' do
       expect { post :create }.to change{ Game.count }.by(1)
     end
+    context 'with a non-default num_rounds and theme' do
+      let(:game_w_rounds) { create(:game, :num_rounds => 5)}
+      let(:game_w_theme) { create(:game, :theme => 'apocalyptic')}
+      
+      it 'creates a game with a non-default round number' do
+        game_w_rounds.num_rounds.should == 5
+      end
+      
+      it 'creates a game with a non-default theme' do
+        game_w_theme.theme.should == 'apocalyptic'
+      end
+    end
   end
   
   describe 'GET #new' do

@@ -8,7 +8,7 @@ class GamesController < ApplicationController
   end
   
   def create
-    @game = Game.create
+    @game = Game.create(params[:game])
     session[:current_game_id] = @game.id
     redirect_to new_move_url
   end

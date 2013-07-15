@@ -1,4 +1,8 @@
 class Game < ActiveRecord::Base
+  attr_accessible :num_rounds, :theme
+  
+  validates :num_rounds, :theme, :presence => true
+  
   has_many :rounds
   
   ROUNDS = 3

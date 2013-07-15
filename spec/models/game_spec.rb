@@ -1,6 +1,11 @@
 require 'spec_helper'
 
 describe Game do 
+  it { should allow_mass_assignment_of(:num_rounds) }
+  it { should allow_mass_assignment_of(:theme) }
+  it { should validate_presence_of(:num_rounds) }
+  it { should validate_presence_of(:theme) }
+  
   it { should have_many(:rounds) }
   
   subject { create(:game) }
