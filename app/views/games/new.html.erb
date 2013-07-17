@@ -1,1 +1,20 @@
-<%= button_to("New Game", game_path) %>
+<%= form_for @game, :url => game_path, :html => {:class => 'form-horizontal' } do |form| %>
+  <% if @game.errors.present? %>
+    <ul>
+      <% @game.errors.full_messages.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  
+  <%= form.select(:num_rounds, [[3, 1, {:num_rounds => 3}], 
+                                                   [5, 2, {:num_rounds => 5}], 
+                                                   [7, 3, {:num_rounds => 7}], 
+                                                   [9, 4, {:num_rounds => 9}], 
+                                                   [11, 5, {:num_rounds => 11}]])%>
+  <br>
+  <%= form.select(:theme, [['classic', 1, {:theme => 'classic'}]])%>
+  
+  <br>
+  <%= form.submit "New Game" %>
+<% end %>
